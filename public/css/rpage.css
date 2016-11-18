@@ -1,0 +1,9 @@
+#content > form.form-horizontal
+{
+	margin-top: 150px;
+}
+
+form.form-horizontal > div.form-group
+{
+	margin-top: 30px;
+}

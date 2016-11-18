@@ -1,0 +1,93 @@
+.navbar-brand,
+
+.navbar-nav li a {
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+}
+
+
+
+.navbar .container-fluid .navbar-header .navbar-brand span {
+	color:  #5383d3;
+	font: normal 150% 'Cookie', cursive;
+}
+
+
+.navbar .container-fluid .navbar-header .navbar-brand h3{
+	font: normal 150% 'Cookie', cursive;
+}
+
+
+body, html {
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+    height: 100%;
+}
+
+
+.bg-1, .bg-2, .bg-3 {
+    height: 100%;
+    position: relative; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inline-logo
+{
+    font: normal 120% 'Cookie', cursive;
+}
+
+.inline-logo-part
+{
+    color:  #5383d3;
+    font: normal 120% 'Cookie', cursive;
+}
+
+.header
+{
+    font: normal 150% 'Pacifico';
+}
+
+.desc
+{
+    font: normal 160% 'Kite One';
+    padding: 18px;
+}
+.bg-1
+{
+    background-image: url('../images/bg1.jpg');
+    opacity: 0.65;
+}
+
+.bg-2
+{
+    background-image: url('../images/bg2.jpeg');
+    opacity: 0.65;   
+}
+
+.bg-3
+{
+    background-image: url('../images/bg3.jpg');
+    opacity: 0.65;   
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border {
+    background-color: #111;
+    color: #fff;
+    opacity: 1.0;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
