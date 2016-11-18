@@ -12,7 +12,7 @@
     <!--span class="glyphicon glyphicon-log-in"></span> -->
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="other/registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="{{ route('user.create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
                      <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
