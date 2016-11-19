@@ -11,49 +11,67 @@
 <div id='content'>
 
 	
-	 <form class="form-horizontal">
+	{!! Form::open(['route' => 'user.store',  'class' => 'form-horizontal', 
+	'onsubmit' => 'return validateForm(this)']) !!}
+	 
 	  <div class="form-group">
 	    <label class="control-label col-sm-1 col-sm-offset-1" for="name">Name:</label>
 	    <div class="col-sm-4">
-	      <input type="text" class="form-control has-error" onblur='validateName(this, this.parentNode)' id="name" placeholder="Enter Your Full Name" required="true">
+
+	    {{Form::text('name', null, array('class' => 'form-control has-error', 'required'=> '' , 'onblur' => "validateName(this, this.parentNode)", 'id'=>'name', 'placeholder'=>'Enter Your Full Name'))}}
+
 	    </div>
 	    <label class="control-label col-sm-1" for="email">Email:</label>
 	    <div class="col-sm-4">
-	      <input type="email" class="form-control" id="email" onblur='validateEmail(this, this.parentNode)' placeholder="Enter Your email" required="true">
+    	
+    	{{Form::email('email', null, array('class' => 'form-control', 'required' => '', 'onblur' => "validateEmail(this, this.parentNode)", 'id'=>'email', 'placeholder'=>'Enter Your Email'))}}
+	      
 	    </div>
 	  </div>
 	  <div class="form-group">
 	    <label class="control-label col-sm-1 col-sm-offset-1" for="password">Password:</label>
 	    <div class="col-sm-4">
-	      <input type="password" class="form-control" onblur='validatePass(this, this.parentNode)' id="password" placeholder="minimum of 7 characters and alpha-numeric" required="true">
+    	  	
+
+	      {{Form::password('password', array('class' => 'form-control', 'required' => '', 'onblur' => "validatePass(this, this.parentNode)", 'id'=>'phone', 'placeholder'=>'Give an alpha-numeric password'))}}
+	    	
+
 	    </div>
-	    <label class="control-label col-sm-1" for="conf" >Confirm:</label>
+	    <label class="control-label col-sm-1" for="conf" >Phone:</label>
 	    <div class="col-sm-4">
-	      <input type="password" class="form-control" id="conf" placeholder="Give the same password" onblur="validateConf(this.form['password'],this,  this.parentNode)" required="true">
+	      
+	      {{Form::text('phone', null, array('class' => 'form-control', 'required' => '', 'onblur' => "validatePhone(this, this.parentNode)", 'id'=>'phone', 'placeholder'=>'Give your mobile number'))}}
+	    
+	      
 	    </div>
 	  </div>
+	  
 	  <div class="form-group">
-	    <label class="control-label col-sm-1 col-sm-offset-1" for="you">You are:</label>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" id="you" placeholder="Enter your address">
-	    </div>
-	    <label class="control-label col-sm-1" for="phone">Phone:</label>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" onblur='validatePhone(this, this.parentNode)' id="phone" placeholder="Give your mobile number" required="true">
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <label class="control-label col-sm-1 col-sm-offset-1" for="addr">Address(Not Required): </label>
+	    <label class="control-label col-sm-1 col-sm-offset-1" for="you">About Yourself(255 characters max):</label>
 	    <div class="col-sm-9">
-	      <input type="text" class="form-control" id="addr" placeholder="Enter your address">
+
+	      {{Form::textArea('about', null, array('class' => 'form-control',  
+	      'id'=>'you', 'placeholder'=>'Tell us about yourself, what you like and what you are looking for in 255 characters', 'maxlength'=>"255"))}}
+
+	    </div>
+	    
+	  </div>
+	  <div class="form-group">
+	    <label class="control-label col-sm-1 col-sm-offset-1" for="addr">Address: </label>
+	    <div class="col-sm-9">
+
+  	      {{Form::text('address', null, array('class' => 'form-control', 'required' => '', 'id'=>'addr', 'placeholder'=>'Give your address'))}}
+
 	    </div>
 	  </div>
 	  <div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-9">
-	      <button type="submit" class="btn btn-block btn-success">Submit</button>
+
+	    	{{Form::submit('Create Account',  array('class' => 'btn btn-block btn-success', 'required' => '', 'id'=>'submit' ))}}
+	      
 	    </div>
 	  </div>
-	</form>
+	{!! Form::close(); !!}
 
 
 </div>
@@ -64,5 +82,6 @@
 @section('script')
 
 {!! Html::script('js/validation.js') !!}
+{!! Html::script('js/bootbox.min.js') !!}
 
 @endsection

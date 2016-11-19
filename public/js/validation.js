@@ -1,4 +1,3 @@
-var flag = false;//a value to keep track whether conf has been touched or not
 
 function addError(element)
 {
@@ -70,11 +69,7 @@ function validatePass(element, parent)
     addSuccess(parent);
     return true;
   }
-  if(flag)
-  {
-    var conf = document.getElementById('conf');
-    validateConf(element, conf, conf.parentNode);
-  }
+  
 }
 
 
@@ -130,22 +125,29 @@ function checkForEmail(value)
     return re.test(value);
 }
 
-function submitCheck(form)
+function validateForm(form)
 {
   var phone = form['phone'];
   var pass = form['pass'];
-  var conf = form['conf'];
   var email = form['email'];
   var name = form['name'];
 
-  if(validatePhone(phone) && validateConf(conf) && validatePassword(pass) && validateName(name) && 
+  if(validatePhone(phone)  && validatePassword(pass) && validateName(name) && 
     validateEmail(email))
   {
     //submit
+    return true;
   }
   else
   {
     //alert 
+    bootbox.alert({
+        message: "You have not filled the info correctly",
+        backdrop: true,
+        
+    });
+
+    return false;
   }
 
 }
