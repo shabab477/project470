@@ -12,7 +12,7 @@
 
 	
 	{!! Form::open(['route' => 'user.store',  'class' => 'form-horizontal', 
-	'onsubmit' => 'return validateForm(this)']) !!}
+	'onsubmit' => 'return validateForm(this)', "enctype"=>"multipart/form-data"]) !!}
 	 
 	  <div class="form-group">
 	    <label class="control-label col-sm-1 col-sm-offset-1" for="name">Name:</label>
@@ -33,7 +33,7 @@
 	    <div class="col-sm-4">
     	  	
 
-	      {{Form::password('password', array('class' => 'form-control', 'required' => '', 'onblur' => "validatePass(this, this.parentNode)", 'id'=>'phone', 'placeholder'=>'Give an alpha-numeric password'))}}
+	      {{Form::password('password', array('class' => 'form-control', 'required' => '', 'onblur' => "validatePass(this, this.parentNode)", 'id'=>'password', 'placeholder'=>'Give an alpha-numeric password'))}}
 	    	
 
 	    </div>
@@ -47,20 +47,28 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label class="control-label col-sm-1 col-sm-offset-1" for="you">About Yourself(255 characters max):</label>
-	    <div class="col-sm-9">
 
-	      {{Form::textArea('about', null, array('class' => 'form-control',  
-	      'id'=>'you', 'placeholder'=>'Tell us about yourself, what you like and what you are looking for in 255 characters', 'maxlength'=>"255"))}}
+	  	<label class="control-label col-sm-1 col-sm-offset-1" for="you">Profile Image(2MB):</label>
+	    <div class="col-sm-3">
+
+	      {{ Form::file('image', array('id' => 'fileChooser', 'onchange'=>"return validateFileUpload()" ))}}
+
+	    </div>
+
+	    <label class="control-label col-sm-1 col-sm-offset-1" for="address">Address:</label>
+	    <div class="col-sm-4">
+
+	      
+  	      {{Form::text('address', null, array('class' => 'form-control', 'required' => '', 'id'=>'addr', 'placeholder'=>'Give your address'))}}
 
 	    </div>
 	    
 	  </div>
 	  <div class="form-group">
-	    <label class="control-label col-sm-1 col-sm-offset-1" for="addr">Address: </label>
+	    <label class="control-label col-sm-1 col-sm-offset-1" for="you">About You: </label>
 	    <div class="col-sm-9">
-
-  	      {{Form::text('address', null, array('class' => 'form-control', 'required' => '', 'id'=>'addr', 'placeholder'=>'Give your address'))}}
+	    	{{Form::textArea('about', null, array('class' => 'form-control',  
+	      'id'=>'you', 'placeholder'=>'Tell us about yourself, what you like and what you are looking for in 255 characters', 'maxlength'=>"255"))}}
 
 	    </div>
 	  </div>

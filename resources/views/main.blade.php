@@ -5,7 +5,6 @@
 
 <body>
 
-@include('partials.messages_partial')
 
 @if(Session::has('name'))
   @include('navs.user_nav')

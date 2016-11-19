@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
+use App\User;
+use Session;
 
 class UserController extends Controller
 {
@@ -35,7 +40,46 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, array(
+                'about' => 'max:255',
+                'phone' => 'required',
+                'name' => 'required',
+                'password' => 'required',
+                'address' => 'required',
+                'email' => 'required|email'
+        ));
+
+        $input = $request->except('image', 'password');
+        $password = Hash::make($request->password);
+        $userObject = new User();
+        $userObject->about = $request->about;
+        $userObject->phone = $request->phone;
+        $userObject->name = $request->name;
+        $userObject->address = $request->address;
+        $userObject->email = $request->email;
+
+        $userObject ->password = $password;
+
+        if($request->hasFile('image')) {
+            $file = Input::file('image');
+            //getting timestamp
+            $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+            
+            $name = $timestamp. '-' .$file->getClientOriginalName();
+            
+            $userObject->image = $name;
+
+            $file->move(public_path().'/images/', $name);
+        }
+
+        $userObject->review = 0;
+        $userObject->is_verified = 1;
+
+        $userObject->save();
+        Session::flash('success', 'Successfully done');
+
+
+        return redirect() -> route('user.create');
     }
 
     /**

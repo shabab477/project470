@@ -128,11 +128,13 @@ function checkForEmail(value)
 function validateForm(form)
 {
   var phone = form['phone'];
-  var pass = form['pass'];
+  var pass = form['password'];
   var email = form['email'];
   var name = form['name'];
 
-  if(validatePhone(phone)  && validatePassword(pass) && validateName(name) && 
+  console.log("value is " + phone.value);
+
+  if(validatePhone(phone)  && validatePass(pass) && validateName(name) && 
     validateEmail(email))
   {
     //submit
@@ -146,9 +148,46 @@ function validateForm(form)
         backdrop: true,
         
     });
-
-    return false;
   }
 
+    return false;
+  
 }
+
+function validateFileUpload() {
+    
+    var fuData = document.getElementById('fileChooser');
+    var FileUploadPath = fuData.value;
+
+    if (FileUploadPath == '') {
+        bootbox.alert("Please upload an image");
+
+
+        $("#fileChooser").val('');
+        return false;
+    } 
+    else 
+    {
+        var Extension = FileUploadPath.substring(
+                FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+        var size = fuData.files[0].size / 1024 / 1024;
+
+        if (Extension == "gif" || Extension == "png" || Extension == "bmp"
+                        || Extension == "jpeg" || Extension == "jpg" && size <= 2) 
+        {
+          return true;
+        } 
+        else 
+        {
+          bootbox.alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP with size of 2MB. ");
+          
+          $("#fileChooser").val('');
+
+          return false;
+        }
+      }
+  }
+
+
 

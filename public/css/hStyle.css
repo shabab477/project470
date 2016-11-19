@@ -7,6 +7,11 @@
 }
 
 
+div#alert
+{
+    margin-top: 80px;
+}
+
 
 .navbar .container-fluid .navbar-header .navbar-brand span {
 	color:  #5383d3;

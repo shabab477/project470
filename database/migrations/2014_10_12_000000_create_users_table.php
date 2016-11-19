@@ -17,9 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('about');
+            $table->string('address');
+            $table->string('image');
             $table->string('password');
             $table->char('phone', 11);
-            $table->string('review');
+            $table->unsignedInteger('review');
             $table->tinyInteger('is_verified');
             $table->rememberToken();
             $table->timestamps();
