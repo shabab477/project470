@@ -6,7 +6,7 @@
 <body>
 
 
-@if(Session::has('name'))
+@if(Session::has('email'))
   @include('navs.user_nav')
 @else
   @include('navs.guest_nav')

@@ -77,9 +77,10 @@ class UserController extends Controller
 
         $userObject->save();
         Session::flash('success', 'Successfully done');
+        $request->session()->put('email', $request -> email);
 
 
-        return redirect() -> route('user.create');
+        return redirect() -> route('home.go');
     }
 
     /**

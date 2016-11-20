@@ -8,6 +8,15 @@
 
 @endif
 
+@if(Session::has('failure'))
+
+	<script type="text/javascript">
+		
+		bootbox.alert("Wrong email or password");
+
+	</script>
+
+@endif
 
 @if(count($errors) > 0)
 	

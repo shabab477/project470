@@ -19,14 +19,20 @@
                         <li>
                            <div class="row">
                               <div class="col-md-12">
-                                 <form class="form" role="form" method="post" action="other/account.html" accept-charset="UTF-8" id="login-nav">
+
+
+                                 <form class="form" role="form" method="post" action="{{ route('login.validate') }}"  id="login-nav">
+                                    <input type="hidden" name="_token"
+                                      value="{{ csrf_token() }}">
                                     <div class="form-group">
+
                                        <label class="sr-only" for="emailIn">Email address</label>
-                                       <input type="email" class="form-control" id="emailIn" placeholder="Email address" required>
+                                       <input type="email" name='email' class="form-control" id="emailIn" placeholder="Email address" required>
                                     </div>
                                     <div class="form-group">
                                        <label class="sr-only" for="passIn">Password</label>
-                                       <input type="password" class="form-control" id="passIn" placeholder="Password" required>
+                                       <input type="password" class="form-control" id="passIn"
+                                       name='password' placeholder="Password" required>
                                     </div>
                                     <div class="checkbox">
                                        <label>

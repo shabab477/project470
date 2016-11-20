@@ -13,7 +13,9 @@
 
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home.go');
 
 Route::resource('user', 'UserController');
 
+
+Route::post('/login', "LoginController@login")->name('login.validate');
