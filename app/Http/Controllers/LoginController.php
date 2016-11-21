@@ -6,27 +6,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Session;
+use Auth;
 
 class LoginController extends Controller
 {
     //
     public function login(Request $request)
     {
-    	$email = $request -> email;
-    	$password = Hash::make($request->password);
+    	$this -> validate($request, array(
+                'password' => 'required',
+                'email' => 'required|email'
+        ));
+        
+        $credentials = array(
+            'email'     => $request -> email,
+            'password'  => $request -> password
+        );
 
-    	$user = User::where('email', $email)
-    			->where('password', $password)->get();
-
-    	if($user -> count() == 1)
+    	if(Auth::attempt($credentials))
     	{
 			Session::flash('success', 'Successfully done');
-        	$request->session()->put('email', $request -> email);
+        	$request->session()->put('id', Auth::user() -> id);
         	
     	}
     	else
     	{
-    		Session::flash('failure', 'Wrong Email');
 
     	}
 		return redirect() -> route('home.go');

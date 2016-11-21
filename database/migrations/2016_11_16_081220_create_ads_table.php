@@ -15,17 +15,15 @@ class CreateAdsTable extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('given_by');
-            $table->unsignedInteger('house_to');
-
-            $table->foreign('given_by')
-                                        ->references('id')
-                                        ->on('users');
-            $table->foreign('house_to')
-                                        ->references('id')
-                                        ->on('houses');
-            
+            $table->string('description');
+            $table->string('address');
+            $table->double('price', 10, 3);
+            $table->float('latitude', 3, 3);
+            $table->float('longitude', 3, 3);
+            $table->string('location');
+            $table->string('contact');
             $table->timestamps();
+            
         });
     }
 

@@ -5,8 +5,10 @@
 
 <body>
 
+@include('partials.messages_partial')
 
-@if(Session::has('email'))
+
+@if(Session::has('id'))
   @include('navs.user_nav')
 @else
   @include('navs.guest_nav')

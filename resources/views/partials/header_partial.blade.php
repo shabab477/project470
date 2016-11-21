@@ -3,12 +3,7 @@
   <title>The Roomie</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {!! Html::style('css/bootstrap.min.css') !!}
   
-  {!! Html::script('js/jquery.min.js') !!}
-  {!! Html::script('js/bootstrap.min.css') !!}
-
-  {!! Html::script('js/bootbox.min.css') !!}
 
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">

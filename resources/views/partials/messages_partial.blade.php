@@ -12,7 +12,7 @@
 
 	<script type="text/javascript">
 		
-		bootbox.alert("Wrong email or password");
+		bootbox.alert({{Session::get('failure')}});
 
 	</script>
 

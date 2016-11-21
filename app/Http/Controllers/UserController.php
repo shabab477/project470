@@ -77,7 +77,7 @@ class UserController extends Controller
 
         $userObject->save();
         Session::flash('success', 'Successfully done');
-        $request->session()->put('email', $request -> email);
+        $request->session()->put('id', $userObject -> id);
 
 
         return redirect() -> route('home.go');
@@ -92,6 +92,10 @@ class UserController extends Controller
     public function show($id)
     {
         //
+
+        $user = User::find($id);
+
+        return view('pages.profile')->withUser($user);
     }
 
     /**
@@ -102,7 +106,6 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
