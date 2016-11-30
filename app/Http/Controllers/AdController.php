@@ -11,6 +11,11 @@ class AdController extends Controller
 {
     //
 
+    public function detail($id)
+    {
+        return null;
+    }
+
     public function index()
     {
     	return view('ads.show');
