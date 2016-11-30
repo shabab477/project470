@@ -23,7 +23,7 @@ Route::post('/login', "LoginController@login")->name('login.validate');
 
 Route::post('/ad', "AdController@create")->name('ad.create');
 Route::get('/ad/create', "AdController@index")->name('ad.show');
-Route::post('/ad/{id}', "AdController@create")->name('ad.detail');
+Route::get('/ad/{id}', "AdController@detail")->name('ad.detail');
 
 
 Route::get('/logout', "LoginController@logout")->name('login.getOut');

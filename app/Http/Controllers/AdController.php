@@ -11,9 +11,13 @@ class AdController extends Controller
 {
     //
 
+
+
     public function detail($id)
     {
-        return null;
+        $info = Ads::find($id);
+        
+        return view('ads.details') -> with('info', $info);
     }
 
     public function index()
