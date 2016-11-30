@@ -18,10 +18,11 @@ class CreateAdsTable extends Migration
             $table->string('description');
             $table->string('address');
             $table->double('price', 10, 3);
-            $table->float('latitude', 3, 3);
-            $table->float('longitude', 3, 3);
+            $table->decimal('latitude', 5, 2)->default(-190);
+            $table->decimal('longitude', 5, 2)->default(-190);
             $table->string('location');
-            $table->string('contact');
+            $table->integer('by')->unsigned();
+            $table->foreign('by')->references('id')->on('users');
             $table->timestamps();
             
         });

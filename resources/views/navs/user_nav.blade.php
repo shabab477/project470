@@ -12,13 +12,31 @@
     <!--span class="glyphicon glyphicon-log-in"></span> -->
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('search.index')}}"><span class="glyphicon glyphicon-search"></span></a></li>
-        <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"></b><span class="glyphicon glyphicon-bullhorn"></span></a>
+        <li><a href="{{route('search.index')}}"><span class="nav-text">Search Houses</span></a></li>
+
+        <li><a href="{{route('ad.show')}}"><span class="nav-text">Create Ads</span></a></li>
+
+{{-- 
+        TODO::Give a named route for Showing the bids that I have done --}}
+
+        <li><a href="#"><span class="nav-text">My Ads</span></a></li>
+        <li>
+             <a href="#"  data-toggle="dropdown"></b><span class="nav-text">My Bids</span></a>
 
          </li>
-         <li><a href="{{route('user.show', array('id'=>Session::get('id')))}}"><span class="glyphicon glyphicon-th-large"></span> </a></li>
+         <li><a href="{{route('login.getOut', array('id'=>Session::get('id')))}}"><span class="nav-text">Logout as {{ Session::get('name') }} </span> </a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+<style type="text/css">
+  
+  .nav-text
+  {
+    font-size: 120%;
+    font-family: 'Kite One';
+  }
+
+</style>

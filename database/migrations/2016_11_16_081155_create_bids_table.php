@@ -15,12 +15,12 @@ class CreateBidsTable extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('cost', 10, 3);
+            $table->decimal('cost', 10, 3);
             $table->unsignedInteger('bid_by');
             $table->unsignedInteger('bid_to');
             $table->string('message');
             $table->timestamps();
-
+            $table->tinyInteger('is_accepted')->default(0);
             $table->foreign('bid_by')
                                     ->references('id')
                                     ->on('users');

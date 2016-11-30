@@ -24,7 +24,7 @@
 <div><h1><p class="text-center header" style="font-size:38px;margin-bottom:15px;">Search</p></h1></div>
 
 <!--row starts-->
-{!! Form::open([null,  'class' => 'form-horizontal']) !!}
+{!! Form::open(['route' => 'search.query',  'class' => 'form-horizontal']) !!}
 
 <div class="row" style="margin-bottom:15px;">
  <div class="col-md-5 col-md-offset-1">
@@ -51,17 +51,17 @@
 </div>
 <!--row ends-->
 <div class="form-group">
+
+  <div class="col-sm-offset-2 col-sm-9">
+
+        {{Form::submit('Show Ads',  array('class' => 'btn btn-block btn-success', 'required' => '', 'id'=>'submit' ))}}
+        
+  </div>
 	    
 </div>
 
 {!! Form::close(); !!}
 
-<div class="col-sm-offset-1 col-sm-9">
-
-    <button class='btn btn-block btn-success' onclick='goAjax()' id='	submit'>Go Query</button>
-	    	
-	      
-</div>
 
 </div>
 
@@ -80,41 +80,5 @@
 
 </div>
 
-@endsection
-
-@section('script')
-
-{!! Html::script('js/adder.js') !!}
-
-<script type="text/javascript">
-function goAjax()
-{
-
-  var max = document.getElementById('max').value;
-  var min = document.getElementById('min').value;
-  var location = document.getElementById('location').value;
-  console.log('here');
-
-  $.ajax({
-  url: "/query/?max=" + max + "&min=" + min + "&location=" + location,
-  type: "get", //send it through get method
-  success: function(response) {
-  	console.log(response);
-    var json = $.parseJSON(response);
-    var container = document.getElementById('res_container');
-
-	$(json).each(function(i,val){
-	   domCreator(container, val['price'], val['location'], val['address'], val['contact'], val['desc']);
-	});
-  },
-  error: function(mess)
-  {
-  	console.log(mess);
-  }
-
-  });
-}
-
-</script>
 @endsection
 

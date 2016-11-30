@@ -27,7 +27,8 @@ class LoginController extends Controller
     	{
 			Session::flash('success', 'Successfully done');
         	$request->session()->put('id', Auth::user() -> id);
-        	
+            $request->session()->put('name', Auth::user() -> name);
+            	
     	}
     	else
     	{
@@ -35,5 +36,13 @@ class LoginController extends Controller
     	}
 		return redirect() -> route('home.go');
 
+    }
+
+    public function logout()
+    {
+        
+        Auth::logout();
+        Session::flush();
+        return redirect() -> route('home.go');
     }
 }
