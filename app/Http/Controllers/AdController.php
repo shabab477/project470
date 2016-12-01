@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Ads;
 use Session;
 use Auth;
+use DB;
 
 class AdController extends Controller
 {
@@ -23,6 +24,14 @@ class AdController extends Controller
     public function index()
     {
     	return view('ads.show');
+    }
+
+    public function getAll()
+    {
+        $users = DB::select("SELECT ads.*, users.name, users.phone FROM bids INNER JOIN ads ON bids.bid_to = ads.id INNER JOIN users ON bids.bid_by = users.id WHERE bids.bid_to IN (SELECT ads.id FROM ads WHERE ads.by = " . Auth::user() -> id . ")");
+
+
+        return view('ads.my') -> withUsers($users);
     }
 
     public function create(Request $request)

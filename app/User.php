@@ -14,6 +14,15 @@ class User extends Authenticatable
         'name', 'email', 'about', 'phone', 'address'
     ];
 
+    public function bids()
+    {
+        return $this->hasManyThrough(
+            'App\Ads', 'App\Bid',
+            'bid_by', 'id', 'id'
+        );
+    }
+
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -19,9 +19,9 @@
 {{-- 
         TODO::Give a named route for Showing the bids that I have done --}}
 
-        <li><a href="#"><span class="nav-text">My Ads</span></a></li>
+        <li><a href="{{ route('ad.my') }}"><span class="nav-text">My Ads Bids</span></a></li>
         <li>
-             <a href="#"  data-toggle="dropdown"></b><span class="nav-text">My Bids</span></a>
+             <a href="{{route('bid.show')}}"><span class="nav-text">My Bids</span></a>
 
          </li>
          <li><a href="{{route('login.getOut', array('id'=>Session::get('id')))}}"><span class="nav-text">Logout as {{ Session::get('name') }} </span> </a></li>

@@ -23,7 +23,12 @@ Route::post('/login', "LoginController@login")->name('login.validate');
 
 Route::post('/ad', "AdController@create")->name('ad.create');
 Route::get('/ad/create', "AdController@index")->name('ad.show');
-Route::get('/ad/{id}', "AdController@detail")->name('ad.detail');
+Route::get('/ad/show/{id}', "AdController@detail")->name('ad.detail');
+Route::get('/ad/show', "AdController@getAll")->name('ad.my');
 
 
 Route::get('/logout', "LoginController@logout")->name('login.getOut');
+
+
+Route::post('/bid/post', "BidController@post") -> name('bid.post');
+Route::get('/bid/show', "BidController@show") -> name('bid.show');

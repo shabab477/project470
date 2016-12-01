@@ -13,6 +13,23 @@
 			font-size: 130%;
 			text-align: center;
 		}
+
+		form
+		{
+			margin-top: 10px;
+		}
+
+		h1
+		{
+			font-family: 'Pacifico';
+			margin-top: 10px;
+
+		}
+
+		div.row
+		{
+			margin-top: 10px;
+		}
 	</style>
 
 @endsection
@@ -21,6 +38,8 @@
 @section('content')
 
 <div class="container-fluid main">
+
+	<h1 class="text-center">Details</h1>
 
 	<div class="row">
 
@@ -64,6 +83,21 @@
 	</div>
 
 	<div id='map' style="width:100%;height:500px">
+		
+	</div>
+
+	<div class="row">
+		{!! Form::open(['route' => 'bid.post',  'class' => 'form-horizontal']) !!}
+
+
+    		{{Form::hidden('bid_to', $info -> id, array('id'=>'bid_to'))}}
+
+			<div class="col-sm-7 col-sm-offset-3">
+				{{Form::submit('Bid On This Ad',  array('class' => 'btn btn-block btn-success', 'required' => 'true', 'id'=>'submit' ))}}
+			</div>
+
+		{!! Form::close(); !!}
+		
 		
 	</div>
 	
